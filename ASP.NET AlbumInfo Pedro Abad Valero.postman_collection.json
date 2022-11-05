@@ -1,0 +1,607 @@
+{
+	"info": {
+		"_postman_id": "cdea6369-ffa1-4e88-9cc5-4b72f05e11ad",
+		"name": "ASP.NET AlbumInfo Pedro Abad Valero",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24199028"
+	},
+	"item": [
+		{
+			"name": "POST Authentication (TOKEN)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"PedroAbad\",\r\n    \"password\": \"This is a relatively long sentence that acts as my password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:{{portNumber}}/api/authentication/authenticate",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{portNumber}}",
+					"path": [
+						"api",
+						"authentication",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Albumes",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZ2l2ZW5fbmFtZSI6IlBlZHJvIiwiZmFtaWx5X25hbWUiOiJBYmFkIiwiYWxidW0iOiJFdm9sdmUiLCJuYmYiOjE2Njc2NjI0MTcsImV4cCI6MTY2NzY2NjAxNywiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzE2OSIsImF1ZCI6ImJlY2FhbGJ1bWluZm9hcGkifQ.SDDHR-yn09F6cudJuptnX7madoGJ8KgKAyPGB-e4s8E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:{{portNumber}}/api/albumes",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{portNumber}}",
+					"path": [
+						"api",
+						"albumes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Albumes (Filtrando por Título)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZ2l2ZW5fbmFtZSI6IlBlZHJvIiwiZmFtaWx5X25hbWUiOiJBYmFkIiwiYWxidW0iOiJFdm9sdmUiLCJuYmYiOjE2Njc2NjI0MTcsImV4cCI6MTY2NzY2NjAxNywiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzE2OSIsImF1ZCI6ImJlY2FhbGJ1bWluZm9hcGkifQ.SDDHR-yn09F6cudJuptnX7madoGJ8KgKAyPGB-e4s8E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:{{portNumber}}/api/albumes?name=OK%20Orchestra",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{portNumber}}",
+					"path": [
+						"api",
+						"albumes"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "OK%20Orchestra"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Albumes (Paginado)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZ2l2ZW5fbmFtZSI6IlBlZHJvIiwiZmFtaWx5X25hbWUiOiJBYmFkIiwiYWxidW0iOiJFdm9sdmUiLCJuYmYiOjE2Njc2NjI0MTcsImV4cCI6MTY2NzY2NjAxNywiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzE2OSIsImF1ZCI6ImJlY2FhbGJ1bWluZm9hcGkifQ.SDDHR-yn09F6cudJuptnX7madoGJ8KgKAyPGB-e4s8E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:{{portNumber}}/api/albumes?pageSize=1&pageNumber=2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{portNumber}}",
+					"path": [
+						"api",
+						"albumes"
+					],
+					"query": [
+						{
+							"key": "pageSize",
+							"value": "1"
+						},
+						{
+							"key": "pageNumber",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Album",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZ2l2ZW5fbmFtZSI6IlBlZHJvIiwiZmFtaWx5X25hbWUiOiJBYmFkIiwiYWxidW0iOiJFdm9sdmUiLCJuYmYiOjE2Njc2NjI0MTcsImV4cCI6MTY2NzY2NjAxNywiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzE2OSIsImF1ZCI6ImJlY2FhbGJ1bWluZm9hcGkifQ.SDDHR-yn09F6cudJuptnX7madoGJ8KgKAyPGB-e4s8E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:{{portNumber}}/api/albumes/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{portNumber}}",
+					"path": [
+						"api",
+						"albumes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Album con Canciones",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZ2l2ZW5fbmFtZSI6IlBlZHJvIiwiZmFtaWx5X25hbWUiOiJBYmFkIiwiYWxidW0iOiJFdm9sdmUiLCJuYmYiOjE2Njc2NjI0MTcsImV4cCI6MTY2NzY2NjAxNywiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzE2OSIsImF1ZCI6ImJlY2FhbGJ1bWluZm9hcGkifQ.SDDHR-yn09F6cudJuptnX7madoGJ8KgKAyPGB-e4s8E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:{{portNumber}}/api/albumes/1?includeCanciones=true",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{portNumber}}",
+					"path": [
+						"api",
+						"albumes",
+						"1"
+					],
+					"query": [
+						{
+							"key": "includeCanciones",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Canciones",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZ2l2ZW5fbmFtZSI6IlBlZHJvIiwiZmFtaWx5X25hbWUiOiJBYmFkIiwiYWxidW0iOiJFdm9sdmUiLCJuYmYiOjE2Njc2NjI0MTcsImV4cCI6MTY2NzY2NjAxNywiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzE2OSIsImF1ZCI6ImJlY2FhbGJ1bWluZm9hcGkifQ.SDDHR-yn09F6cudJuptnX7madoGJ8KgKAyPGB-e4s8E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:{{portNumber}}/api/albumes/1/canciones",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{portNumber}}",
+					"path": [
+						"api",
+						"albumes",
+						"1",
+						"canciones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Cancion",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZ2l2ZW5fbmFtZSI6IlBlZHJvIiwiZmFtaWx5X25hbWUiOiJBYmFkIiwiYWxidW0iOiJFdm9sdmUiLCJuYmYiOjE2Njc2NjI0MTcsImV4cCI6MTY2NzY2NjAxNywiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzE2OSIsImF1ZCI6ImJlY2FhbGJ1bWluZm9hcGkifQ.SDDHR-yn09F6cudJuptnX7madoGJ8KgKAyPGB-e4s8E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:{{portNumber}}/api/albumes/1/canciones/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{portNumber}}",
+					"path": [
+						"api",
+						"albumes",
+						"1",
+						"canciones",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Cancion",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZ2l2ZW5fbmFtZSI6IlBlZHJvIiwiZmFtaWx5X25hbWUiOiJBYmFkIiwiYWxidW0iOiJFdm9sdmUiLCJuYmYiOjE2Njc2NjE5MDcsImV4cCI6MTY2NzY2NTUwNywiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzE2OSIsImF1ZCI6ImJlY2FhbGJ1bWluZm9hcGkifQ.OtsFY3YDGi3JLl5Ze-A5AQ5u_hVH5Dd2y0XYDxiQRUI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Title\": \"Weak\",\n    \"description\": \"Troubles yet to come\"\n}"
+				},
+				"url": {
+					"raw": "https://localhost:{{portNumber}}/api/albumes/1/canciones",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{portNumber}}",
+					"path": [
+						"api",
+						"albumes",
+						"1",
+						"canciones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Canción",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZ2l2ZW5fbmFtZSI6IlBlZHJvIiwiZmFtaWx5X25hbWUiOiJBYmFkIiwiYWxidW0iOiJFdm9sdmUiLCJuYmYiOjE2Njc2NDk1NDksImV4cCI6MTY2NzY1MzE0OSwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzE2OSIsImF1ZCI6ImJlY2FhbGJ1bWluZm9hcGkifQ.2HXGBQTMJkG5kRaPR8eXipnYX2s-fn8MGdOsL634KPk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Title\": \"Updated - Believer\",\n    \"description\": \"Updated - First things first, I'ma say all the words inside my head.\"\n}"
+				},
+				"url": {
+					"raw": "https://localhost:{{portNumber}}/api/albumes/1/canciones/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{portNumber}}",
+					"path": [
+						"api",
+						"albumes",
+						"1",
+						"canciones",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Canción Parcialmente",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZ2l2ZW5fbmFtZSI6IlBlZHJvIiwiZmFtaWx5X25hbWUiOiJBYmFkIiwiYWxidW0iOiJFdm9sdmUiLCJuYmYiOjE2Njc2NDk1NDksImV4cCI6MTY2NzY1MzE0OSwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzE2OSIsImF1ZCI6ImJlY2FhbGJ1bWluZm9hcGkifQ.2HXGBQTMJkG5kRaPR8eXipnYX2s-fn8MGdOsL634KPk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n      \"op\": \"replace\",\n      \"path\": \"/description\",\n      \"value\": \"Updated - First things first, I'ma say all the words inside my head.\"\n    }\n]"
+				},
+				"url": {
+					"raw": "https://localhost:{{portNumber}}/api/albumes/1/canciones/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{portNumber}}",
+					"path": [
+						"api",
+						"albumes",
+						"1",
+						"canciones",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Cancion",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZ2l2ZW5fbmFtZSI6IlBlZHJvIiwiZmFtaWx5X25hbWUiOiJBYmFkIiwiYWxidW0iOiJFdm9sdmUiLCJuYmYiOjE2Njc2NDk1NDksImV4cCI6MTY2NzY1MzE0OSwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzE2OSIsImF1ZCI6ImJlY2FhbGJ1bWluZm9hcGkifQ.2HXGBQTMJkG5kRaPR8eXipnYX2s-fn8MGdOsL634KPk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:{{portNumber}}/api/albumes/1/canciones/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{portNumber}}",
+					"path": [
+						"api",
+						"albumes",
+						"1",
+						"canciones",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Album",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZ2l2ZW5fbmFtZSI6IlBlZHJvIiwiZmFtaWx5X25hbWUiOiJBYmFkIiwiYWxidW0iOiJFdm9sdmUiLCJuYmYiOjE2Njc2NTk4OTgsImV4cCI6MTY2NzY2MzQ5OCwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzE2OSIsImF1ZCI6ImJlY2FhbGJ1bWluZm9hcGkifQ.AeMHa4rtDKX385xY1RquZ9hrK0pJznVHYbuWHWD96HQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Title\": \"The click\",\n    \"description\": \"Album de Ajr.\"\n}"
+				},
+				"url": {
+					"raw": "https://localhost:{{portNumber}}/api/albumes",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{portNumber}}",
+					"path": [
+						"api",
+						"albumes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Album",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZ2l2ZW5fbmFtZSI6IlBlZHJvIiwiZmFtaWx5X25hbWUiOiJBYmFkIiwiYWxidW0iOiJFdm9sdmUiLCJuYmYiOjE2Njc2NjA2NDAsImV4cCI6MTY2NzY2NDI0MCwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzE2OSIsImF1ZCI6ImJlY2FhbGJ1bWluZm9hcGkifQ.VQBByncQ1kkObEvE3bA1sTh_4nsBnkA6TAvZ0UtmGfM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Title\": \"Updated - Evolve\",\n    \"description\": \"Updated - Album de Imagine Dragons.\"\n}"
+				},
+				"url": {
+					"raw": "https://localhost:{{portNumber}}/api/albumes/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{portNumber}}",
+					"path": [
+						"api",
+						"albumes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Album Parcialmente",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZ2l2ZW5fbmFtZSI6IlBlZHJvIiwiZmFtaWx5X25hbWUiOiJBYmFkIiwiYWxidW0iOiJFdm9sdmUiLCJuYmYiOjE2Njc2NjEyMzIsImV4cCI6MTY2NzY2NDgzMiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzE2OSIsImF1ZCI6ImJlY2FhbGJ1bWluZm9hcGkifQ.xcHEGut7AP4rP8BUMOGCVH-_B_KOkJdhtmLtPbJfOjM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n      \"op\": \"replace\",\n      \"path\": \"/description\",\n      \"value\": \"Album de Imagine Dragons.\"\n    }\n]"
+				},
+				"url": {
+					"raw": "https://localhost:{{portNumber}}/api/albumes/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{portNumber}}",
+					"path": [
+						"api",
+						"albumes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Album (con sus canciones)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZ2l2ZW5fbmFtZSI6IlBlZHJvIiwiZmFtaWx5X25hbWUiOiJBYmFkIiwiYWxidW0iOiJFdm9sdmUiLCJuYmYiOjE2Njc2NjE5MDcsImV4cCI6MTY2NzY2NTUwNywiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzE2OSIsImF1ZCI6ImJlY2FhbGJ1bWluZm9hcGkifQ.OtsFY3YDGi3JLl5Ze-A5AQ5u_hVH5Dd2y0XYDxiQRUI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:{{portNumber}}/api/albumes/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "{{portNumber}}",
+					"path": [
+						"api",
+						"albumes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
