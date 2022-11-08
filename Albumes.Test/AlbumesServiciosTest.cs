@@ -10,7 +10,7 @@ namespace Albumes.Test
         private AlbumInfoRepository _albumInfoRepository;
         public AlbumesServiciosTest()
         {
-            var connection = new SqliteConnection("Data source=:memory:");
+            var connection = new SqliteConnection("Data source=BecaAlbumInfo.db");
             connection.Open();
 
             var optionsBuilder = new DbContextOptionsBuilder<AlbumInfoContext>().UseSqlite(connection);
