@@ -1,46 +1,66 @@
-﻿using AutoMapper;
+﻿using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
 using Beca.AlbumInfo.API.DbContexts;
-using Beca.AlbumInfo.API.Entities;
-using Beca.AlbumInfo.API.Models;
 using Beca.AlbumInfo.API.Services;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Albumes.Test
 {
-    public class AlbumesServiciosTest
+    public class AlbumesServiciosTest : IDisposable
     {
-        // Validar que el album tiene al menos 1 canción
+        private AlbumInfoRepository _albumInfoRepository;
+        public AlbumesServiciosTest()
+        {
+            var connection = new SqliteConnection("Data source=:memory:");
+            connection.Open();
+
+            var optionsBuilder = new DbContextOptionsBuilder<AlbumInfoContext>().UseSqlite(connection);
+            var _dbContext = new AlbumInfoContext(optionsBuilder.Options);
+
+            _dbContext.Database.Migrate();
+
+            _albumInfoRepository = new AlbumInfoRepository(_dbContext);
+        }
+        public void Dispose()
+        {
+
+        }
+
         [Fact]
-        public void album_validarCanciones()
+        public async Task AlbumServicios_ComprobarTieneCanciones()
         {
             // Arrange
-
-            AlbumDto albumCreado = new AlbumDto()
-            {
-                Title = "album de ejemplo",
-                Description = "descripción de ejemplo"
-            };
+            var album = await _albumInfoRepository.GetAlbumAsync(1, false);
 
             // Act
-            CancionDto cancion = new CancionDto()
-            {
-                Title = "cancion de ejemplo",
-                Description = "Descripción de ejemplo"
-            };
-
-            albumCreado.Canciones.Add(cancion);
-
-            var Canciones = albumCreado.Canciones;
-
-            int numeroCanciones = Canciones.Count();
 
             // Assert
-            Assert.True(numeroCanciones > 0);
+            Assert.Empty(album.Canciones);
+        }
+
+        [Fact]
+        public async Task AlbumServicios_ComprobarNumeroCanciones()
+        {
+            // Arrange
+            var album = await _albumInfoRepository.GetAlbumAsync(1, false);
+
+            // Act
+            int numero = album.Canciones.Count;
+
+            // Assert
+            Assert.True(2 >= numero);
+        }
+
+        [Fact]
+        public async Task AlbumServicios_ComprobarNombreAlbum()
+        {
+            // Arrange
+            var album = await _albumInfoRepository.GetAlbumAsync(1, false);
+
+            // Act
+
+            // Assert
+            Assert.Equal("Evolve", album.Title);
         }
     }
+
 }
