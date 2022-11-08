@@ -10,21 +10,21 @@ using Xunit;
 
 namespace Albumes.Test
 {
-    public class AlbumesTest
+    public class CancionesTest
     {
-        // Validar que el nombre del album tiene más de 1 caracter
+        // Validar que el nombre de la canción tiene más de 1 caracter
         [Fact]
-        public void crearAlbum_validarNombre()
+        public void crearCancion_validarNombre()
         {
             // Arrange
-            AlbumForCreationDto albumCreado = new AlbumForCreationDto()
+            CancionForCreationDto cancionCreada = new CancionForCreationDto()
             {
-                Title = "album de ejemplo",
+                Title = "cancion de ejemplo",
                 Description = "descripción de ejemplo"
             };
 
             // Act
-            var longCadena = albumCreado.Title.Length;
+            var longCadena = cancionCreada.Title.Length;
 
             // Assert
             Assert.True(1 < longCadena);
@@ -32,17 +32,17 @@ namespace Albumes.Test
 
         // Validar que la descripción del album tiene más de 1 caracter
         [Fact]
-        public void crearAlbum_validarDescripcion()
+        public void crearCancion_validarDescripcion()
         {
             // Arrange
-            AlbumForCreationDto albumCreado = new AlbumForCreationDto()
+            CancionForCreationDto cancionCreada = new CancionForCreationDto()
             {
-                Title = "album de ejemplo",
+                Title = "cancion de ejemplo",
                 Description = "descripción de ejemplo"
             };
 
             // Act
-            var longCadena = albumCreado.Description.Length;
+            var longCadena = cancionCreada.Description.Length;
 
             // Assert
             Assert.True(300 > longCadena);
@@ -50,19 +50,21 @@ namespace Albumes.Test
 
         // Comprobar que el título contiene x texto
         [Fact]
-        public void crearAlbum_comprobarTitulo()
+        public void crearCancion_comprobarTitulo()
         {
             // Arrange
-            AlbumForCreationDto albumCreado = new AlbumForCreationDto()
+            CancionForCreationDto cancionCreada = new CancionForCreationDto()
             {
-                Title = "album de ejemplo",
+                Title = "titulo",
                 Description = "descripción de ejemplo"
             };
 
             // Act
+            cancionCreada.Title = "prueba de cancion";
 
             // Assert
-            Assert.Contains("albu", albumCreado.Title);
+            Assert.Contains("canci", cancionCreada.Title);
         }
+
     }
 }
